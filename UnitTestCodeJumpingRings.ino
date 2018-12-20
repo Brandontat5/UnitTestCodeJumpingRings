@@ -11,7 +11,7 @@ const int waitTimeForHighCharge = 18000;
 const int waitTimeForLowCharge = 18000;
 const int waitTimeForRingJump = 1000;
 
-// set up
+// set up, only does one run per reset
 
 void setup() {
   pinMode(chargeRelayPin, OUTPUT); //init lEDS
