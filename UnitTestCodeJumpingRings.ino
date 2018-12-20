@@ -11,8 +11,10 @@ const int waitTimeForHighCharge = 18000;
 const int waitTimeForLowCharge = 18000;
 const int waitTimeForRingJump = 1000;
 
+// set up
+
 void setup() {
-  pinMode(chargeRelayPin, OUTPUT);
+  pinMode(chargeRelayPin, OUTPUT); //init lEDS
   pinMode(ringOneLEDPin, OUTPUT);
   pinMode(ringTwoLEDPin, OUTPUT);
   pinMode(ringThreeLEDPin, OUTPUT);
@@ -22,10 +24,11 @@ void setup() {
   delay(100);
   chargeCapacitor(waitTimeForLowCharge, ringTwoLEDPin);
   jumpRingTwo();
-  
+
   jumpThirdRing();
 
 }
+
 
 void loop() {
 
@@ -46,7 +49,7 @@ void chargeCapacitor(int delayTime, int LEDNumber) {
   digitalWrite(LEDNumber, LOW);
 }
 
-void jumpRingOne() {
+void jumpRingOne() { // write pin to HIGH which allowed power to go through to move ring
 
   digitalWrite(ringOneRelayPin, HIGH);
   delay(waitTimeForRingJump);
@@ -60,10 +63,10 @@ void jumpRingTwo() {
 }
 
 void jumpThirdRing() {
-  
+
   digitalWrite(ringThreeLEDPin, HIGH);
   delay(waitTimeForHighCharge);
-  
+
   for (int index = 0; index <= 10; index++) {
     digitalWrite(ringThreeLEDPin, LOW);
     delay(blinkDelayForLED);
@@ -72,4 +75,3 @@ void jumpThirdRing() {
   }
   digitalWrite(ringThreeLEDPin, LOW);
 }
-
